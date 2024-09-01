@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dol7sfm54jgcy"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_2jtmy"]
+[ext_resource type="PackedScene" uid="uid://dmhirtfi7tyoq" path="res://Scenes/base_entity.tscn" id="1_x7fqg"]
+[ext_resource type="Texture2D" uid="uid://cimdsw671iqb8" path="res://Player/Assets/knight/knight_m.png" id="2_bxi6b"]
+[ext_resource type="PackedScene" uid="uid://ft630w5xfq62" path="res://Weapons/Regular sword/regular_sword.tscn" id="4_2tj31"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra7ht"]
+size = Vector2(8, 11.5)
+
+[node name="Player" node_paths=PackedStringArray("current_weapon") instance=ExtResource("1_x7fqg")]
+z_index = 1
+collision_layer = 2
+script = ExtResource("1_2jtmy")
+current_weapon = NodePath("RegularSword")
+MAX_HEALTH = 5.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_bxi6b")
+
+[node name="Hitbox" parent="." index="1"]
+position = Vector2(0, 8.25)
+shape = SubResource("RectangleShape2D_ra7ht")
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+zoom = Vector2(4, 4)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="RegularSword" parent="." index="4" instance=ExtResource("4_2tj31")]
+position = Vector2(0, 6)

@@ -1,31 +1,53 @@
 class_name BaseEntity
 extends CharacterBody2D
 
+@export var MAX_HEALTH : float
 @onready var animator : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
-@onready var hp_comp : HealthComponent = $HealthComponent
+var hp : float
+var direction : Vector2
+var knockback : Vector2
+var invincible := false
 var hurt := false
+var can_move := true
+
 
 func _ready() -> void:
-	hp_comp.connect("hit", get_hit)
+	hp = MAX_HEALTH
+
+
+func _physics_process(delta: float) -> void:
+	velocity = direction + knockback
+	knockback = lerp(knockback, Vector2.ZERO, 0.25)
+	if knockback.length() < 5:
+		knockback = Vector2.ZERO
+	move_and_slide()
+
 
 func _process(delta: float) -> void:
-	if not hurt:
-		if velocity:
-			animator.play("run")
-		else:
-			animator.play("idle")
-		if velocity.x > 0:
-			sprite.scale.x = 1
-		elif velocity.x < 0:
-			sprite.scale.x = -1
+	if hurt:
+		return
+	if direction:
+		animator.play("run")
+	else:
+		animator.play("idle")
+	if direction.x > 0:
+		sprite.scale.x = 1
+	elif direction.x < 0:
+		sprite.scale.x = -1
 
-func get_hit() -> void:
+
+func get_hit(attack : Attack) -> void:
+	if invincible:
+		return
 	hurt = true
+	hp -= attack.damage
 	animator.play("hit")
+	knockback = -to_local(attack.position).normalized() * attack.knockback_force
 	await animator.animation_finished
-	if hp_comp.health <= 0:
+	if hp <= 0:
 		# Death sequence
+		queue_free()
 		pass
 	else:
 		hurt = false

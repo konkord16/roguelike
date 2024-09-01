@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmhirtfi7tyoq"]
+
+[ext_resource type="AnimationLibrary" uid="uid://dltvov4v6rxkn" path="res://Scenes/entity.res" id="1_2jowg"]
+
+[node name="BaseEntity" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+hframes = 9
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("1_2jowg")
+}

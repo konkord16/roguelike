@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca8ipqbh52kpr"]
+
+[ext_resource type="PackedScene" uid="uid://dmhirtfi7tyoq" path="res://Scenes/base_entity.tscn" id="1_7vkh6"]
+[ext_resource type="Script" path="res://Enemies/tiny_zombie.gd" id="2_cusdk"]
+[ext_resource type="Texture2D" uid="uid://dhfm4jw16i3pk" path="res://Assets/frames/tiny_zombie/tiny_zombie.png" id="2_pt3p0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee03b"]
+size = Vector2(8.07476, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00hbt"]
+size = Vector2(10, 10)
+
+[node name="TinyZombie" instance=ExtResource("1_7vkh6")]
+collision_layer = 4
+script = ExtResource("2_cusdk")
+MAX_HEALTH = 3.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_pt3p0")
+
+[node name="Hitbox" parent="." index="1"]
+position = Vector2(1, 3)
+scale = Vector2(0.990741, 1)
+shape = SubResource("RectangleShape2D_ee03b")
+
+[node name="Hurtbox" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_00hbt")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

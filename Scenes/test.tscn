@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://0lbkmwd45thn"]
 
-[ext_resource type="PackedScene" uid="uid://ncrnjmafjvlj" path="res://Scenes/player.tscn" id="1_ua8am"]
-[ext_resource type="Texture2D" uid="uid://dok3jhhrogkcw" path="res://Assets/frames/tiny_zombie/tiny_zombie_idle_anim_f0.png" id="2_2y6hc"]
+[ext_resource type="PackedScene" uid="uid://dol7sfm54jgcy" path="res://Player/player.tscn" id="1_ua8am"]
+[ext_resource type="PackedScene" uid="uid://ca8ipqbh52kpr" path="res://Enemies/tiny_zombie.tscn" id="2_vrqkm"]
 
 [node name="Test" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_ua8am")]
-position = Vector2(7, 9)
+[node name="Player" parent="." instance=ExtResource("1_ua8am")]
+position = Vector2(-28, 1)
 
-[node name="TinyZombieIdleAnimF0" type="Sprite2D" parent="."]
-position = Vector2(-25, 14)
-texture = ExtResource("2_2y6hc")
+[node name="TinyZombie" parent="." instance=ExtResource("2_vrqkm")]
+position = Vector2(-65, 17)
