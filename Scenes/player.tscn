@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://ncrnjmafjvlj"]
+
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_2jtmy"]
+[ext_resource type="Texture2D" uid="uid://cimdsw671iqb8" path="res://Assets/frames/playable/knight/knight_m.png" id="2_bxi6b"]
+[ext_resource type="Script" path="res://Scripts/health_component.gd" id="2_gbkvo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5dgi"]
+size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_smg7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qpncx"]
+resource_name = "idle"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_2x4oq"]
+resource_name = "run"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jihdo"]
+_data = {
+"RESET": SubResource("Animation_smg7x"),
+"idle": SubResource("Animation_qpncx"),
+"run": SubResource("Animation_2x4oq")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_2jtmy")
+
+[node name="HealthComponent" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_n5dgi")
+script = ExtResource("2_gbkvo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_bxi6b")
+hframes = 9
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jihdo")
+}
