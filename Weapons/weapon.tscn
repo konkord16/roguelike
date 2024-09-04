@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://b6ytf8mph2a0a"]
 
-[ext_resource type="Script" path="res://Weapons/base_weapon.gd" id="1_isxgy"]
+[ext_resource type="Script" path="res://Weapons/weapon.gd" id="1_v5b45"]
 
-[node name="BaseWeapon" type="Node2D"]
-script = ExtResource("1_isxgy")
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_v5b45")
 
 [node name="Pivot" type="Node2D" parent="."]
 
@@ -19,9 +19,13 @@ collision_mask = 4
 emitting = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
 
 [node name="Cooldown" type="Timer" parent="."]
 unique_name_in_owner = true
+one_shot = true
+
+[node name="Combo" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
 
 [connection signal="body_entered" from="Pivot/Sprite2D/Hurtbox" to="." method="_on_hurtbox_body_entered"]

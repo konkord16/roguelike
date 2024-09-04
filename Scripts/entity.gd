@@ -1,7 +1,8 @@
-class_name BaseEntity
+class_name Entity
 extends CharacterBody2D
 
 @export var MAX_HEALTH : float
+@export var knockback_multiplier := 1.0
 @onready var animator : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 var hp : float
@@ -43,7 +44,7 @@ func get_hit(attack : Attack) -> void:
 	hurt = true
 	hp -= attack.damage
 	animator.play("hit")
-	knockback = -to_local(attack.position).normalized() * attack.knockback_force
+	dash(-to_local(attack.position), attack.knockback_force)
 	await animator.animation_finished
 	if hp <= 0:
 		# Death sequence
@@ -51,3 +52,14 @@ func get_hit(attack : Attack) -> void:
 		pass
 	else:
 		hurt = false
+
+
+func dash(direction : Vector2, force : float) -> void:
+	knockback += direction.normalized() * force * knockback_multiplier
+
+func _on_started_self_stun_attack() -> void:
+	can_move = false
+	
+	
+func _on_ended_self_stun_attack() -> void:
+	can_move = true

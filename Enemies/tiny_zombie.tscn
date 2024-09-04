@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ca8ipqbh52kpr"]
 
-[ext_resource type="PackedScene" uid="uid://dmhirtfi7tyoq" path="res://Scenes/base_entity.tscn" id="1_7vkh6"]
+[ext_resource type="PackedScene" uid="uid://dmhirtfi7tyoq" path="res://Scenes/entity.tscn" id="1_7vkh6"]
 [ext_resource type="Script" path="res://Enemies/tiny_zombie.gd" id="2_cusdk"]
 [ext_resource type="Texture2D" uid="uid://dhfm4jw16i3pk" path="res://Assets/frames/tiny_zombie/tiny_zombie.png" id="2_pt3p0"]
 
