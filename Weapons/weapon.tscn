@@ -8,6 +8,7 @@ script = ExtResource("1_v5b45")
 [node name="Pivot" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+position = Vector2(0, -10)
 
 [node name="Hurtbox" type="Area2D" parent="Pivot/Sprite2D"]
 collision_layer = 8
@@ -20,12 +21,17 @@ emitting = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="ComboCooldown" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
 
 [node name="Combo" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.25
+one_shot = true
 
-[connection signal="body_entered" from="Pivot/Sprite2D/Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[node name="AbilityCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[connection signal="timeout" from="ComboCooldown" to="." method="_on_combo_cooldown_timeout"]

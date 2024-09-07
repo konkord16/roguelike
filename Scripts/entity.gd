@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	if hurt:
+	if hurt or not can_move:
 		return
 	if direction:
 		animator.play("run")
@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 
 
 func get_hit(attack : Attack) -> void:
-	if invincible:
+	if invincible or hurt:
 		return
 	hurt = true
 	hp -= attack.damage
@@ -59,7 +59,6 @@ func dash(direction : Vector2, force : float) -> void:
 
 func _on_started_self_stun_attack() -> void:
 	can_move = false
-	
-	
+
 func _on_ended_self_stun_attack() -> void:
 	can_move = true

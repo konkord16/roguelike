@@ -1,25 +1,28 @@
 extends Entity
 
 const SPEED = 100
-@export var current_weapon : BaseWeapon
+@export var current_weapon : Weapon
 
 func _ready() -> void:
 	super()
-	$RegularSword.dashed.connect(dash) # In the future i'm gonna be connecting the signals once the player picks up the weapon
-	$RegularSword.started_self_stun_attack.connect(_on_started_self_stun_attack)
-	$RegularSword.ended_self_stun_attack.connect(_on_ended_self_stun_attack)
+	for weapon in %Weapons.get_children():# In the future i'm gonna be connecting the signals once the player picks up the weapon
+		weapon.dashed.connect(dash)
+		weapon.started_self_stun_attack.connect(_on_started_self_stun_attack)
+		weapon.ended_self_stun_attack.connect(_on_ended_self_stun_attack)
+		weapon.attacked.connect(_on_weapon_attack)
+		
 
 func _physics_process(delta: float) -> void:
-	if can_move:
-		current_weapon.look_at(get_global_mouse_position())
 	super(delta)
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if not can_move:
-		direction = Vector2.ZERO
-		return
-	direction = Input.get_vector("left", "right", "up", "down") * SPEED
+	direction = Vector2.ZERO
+	if can_move:
+		direction = Input.get_vector("left", "right", "up", "down") * SPEED
 	if Input.is_action_just_pressed("attack"):
 		current_weapon.attack()
-		sprite.scale.x = sign(to_local(get_global_mouse_position()).x)
+	if Input.is_action_pressed("special"):
+		pass
+
+
+func _on_weapon_attack() -> void:
+	sprite.scale.x = sign(to_local(get_global_mouse_position()).x)
+	print('flipped')
