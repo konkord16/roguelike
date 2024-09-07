@@ -1,5 +1,8 @@
-extends Entity
+extends Enemy
 
+func _physics_process(delta: float) -> void:
+	super(delta)
+	chase()
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if not body.has_method("get_hit"):

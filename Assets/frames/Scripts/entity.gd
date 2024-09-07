@@ -1,7 +1,8 @@
 class_name Entity
 extends CharacterBody2D
 
-@export var MAX_HEALTH : float
+@export var move_speed := 200.0
+@export var MAX_HEALTH := 1.0
 @export var knockback_multiplier := 1.0
 @onready var animator : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
@@ -18,12 +19,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	velocity = direction + knockback
+	velocity = direction * move_speed + knockback
 	knockback = lerp(knockback, Vector2.ZERO, 0.25)
 	if knockback.length() < 5:
 		knockback = Vector2.ZERO
 	move_and_slide()
-
+	direction = Vector2.ZERO
 
 func _process(delta: float) -> void:
 	if hurt or not can_move:

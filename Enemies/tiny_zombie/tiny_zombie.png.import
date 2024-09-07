@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhfm4jw16i3pk"
-path="res://.godot/imported/tiny_zombie.png-3c09271b6fe459c387871dcc63a62aed.ctex"
+path="res://.godot/imported/tiny_zombie.png-03c779949ebed49facf1d5b0bceefc5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/frames/tiny_zombie/tiny_zombie.png"
-dest_files=["res://.godot/imported/tiny_zombie.png-3c09271b6fe459c387871dcc63a62aed.ctex"]
+source_file="res://Enemies/tiny_zombie/tiny_zombie.png"
+dest_files=["res://.godot/imported/tiny_zombie.png-03c779949ebed49facf1d5b0bceefc5d.ctex"]
 
 [params]
 

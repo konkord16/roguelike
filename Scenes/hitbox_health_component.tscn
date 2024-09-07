@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b68rbpyogt18p"]
-
-[ext_resource type="Script" path="res://Scripts/health_component.gd" id="1_wpoqc"]
-
-[node name="Hitbox&HealthComponent" type="Area2D"]
-script = ExtResource("1_wpoqc")
-MAX_HEALTH = 10.0
