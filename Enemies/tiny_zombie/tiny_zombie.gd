@@ -12,9 +12,3 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 	attack.position = global_position
 	attack.knockback_force = 300
 	body.get_hit(attack)
-
-
-func _on_got_hit() -> void:
-	%Hurtbox.monitoring = false
-	await animator.animation_finished
-	%Hurtbox.monitoring = true

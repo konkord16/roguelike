@@ -8,11 +8,12 @@ signal got_hit
 @onready var animator : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 var hp : float
-var direction : Vector2
-var knockback : Vector2
+var direction : Vector2 ## Movement direction
+var knockback : Vector2 ## Is added to velocity
 var invincible := false
 var hurt := false
 var can_move := true
+var locked_rotation:= false
 
 
 func _ready() -> void:
@@ -33,11 +34,9 @@ func _process(delta: float) -> void:
 	if direction:
 		animator.play("run")
 	else:
-		animator.play("idle")
-	if direction.x > 0:
-		sprite.scale.x = 1
-	elif direction.x < 0:
-		sprite.scale.x = -1
+		animator.play("idle")	
+	if direction.x and not locked_rotation:
+		sprite.scale.x = sign(direction.x)
 
 
 func get_hit(attack : Attack) -> void:
@@ -62,6 +61,7 @@ func dash(direction : Vector2, force : float) -> void:
 
 func _on_started_self_stun_attack() -> void:
 	can_move = false
+
 
 func _on_ended_self_stun_attack() -> void:
 	can_move = true

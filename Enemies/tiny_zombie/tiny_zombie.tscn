@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://3wc4st8phha"]
+[gd_scene load_steps=5 format=3 uid="uid://3wc4st8phha"]
 
 [ext_resource type="PackedScene" uid="uid://fkh2hsi7mifu" path="res://Enemies/enemy.tscn" id="1_scupa"]
 [ext_resource type="Script" path="res://Enemies/tiny_zombie/tiny_zombie.gd" id="2_cusdk"]
@@ -6,9 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1lwg"]
 size = Vector2(7, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv12f"]
-size = Vector2(9, 10)
 
 [node name="Enemy" instance=ExtResource("1_scupa")]
 collision_layer = 4
@@ -24,19 +21,3 @@ texture = ExtResource("2_txqpp")
 [node name="Hitbox" parent="." index="1"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_v1lwg")
-
-[node name="NavigationAgent2D" parent="." index="3"]
-debug_enabled = true
-
-[node name="Hurtbox" type="Area2D" parent="." index="4"]
-unique_name_in_owner = true
-position = Vector2(-1, -3)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(0.5, 3)
-shape = SubResource("RectangleShape2D_uv12f")
-
-[connection signal="got_hit" from="." to="." method="_on_got_hit"]
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

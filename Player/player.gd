@@ -16,11 +16,13 @@ func _physics_process(delta: float) -> void:
 	if can_move:
 		direction = Input.get_vector("left", "right", "up", "down")
 	if Input.is_action_just_pressed("attack"):
-		current_weapon.attack()
+		current_weapon.attack(get_global_mouse_position())
 	if Input.is_action_pressed("special"):
-		pass
+		get_tree().reload_current_scene()
 
 
 func _on_weapon_attack() -> void:
+	locked_rotation = true
 	sprite.scale.x = sign(to_local(get_global_mouse_position()).x)
-	print('flipped')
+	await current_weapon.combo_cooldown.timeout
+	locked_rotation = false
