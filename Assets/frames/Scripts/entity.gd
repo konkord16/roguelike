@@ -1,6 +1,7 @@
 class_name Entity
 extends CharacterBody2D
 
+signal got_hit
 @export var move_speed := 200.0
 @export var MAX_HEALTH := 1.0
 @export var knockback_multiplier := 1.0
@@ -45,6 +46,7 @@ func get_hit(attack : Attack) -> void:
 	hurt = true
 	hp -= attack.damage
 	animator.play("hit")
+	got_hit.emit()
 	dash(-to_local(attack.position), attack.knockback_force)
 	await animator.animation_finished
 	if hp <= 0:
