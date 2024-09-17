@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://3wc4st8phha"]
+[gd_scene load_steps=6 format=3 uid="uid://3wc4st8phha"]
 
 [ext_resource type="PackedScene" uid="uid://fkh2hsi7mifu" path="res://Enemies/enemy.tscn" id="1_scupa"]
 [ext_resource type="Script" path="res://Enemies/tiny_zombie/tiny_zombie.gd" id="2_cusdk"]
 [ext_resource type="Texture2D" uid="uid://dhfm4jw16i3pk" path="res://Enemies/tiny_zombie/tiny_zombie.png" id="2_txqpp"]
+[ext_resource type="PackedScene" uid="uid://ft630w5xfq62" path="res://Weapons/Regular sword/regular_sword.tscn" id="4_35ka2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1lwg"]
 size = Vector2(7, 8)
 
-[node name="Enemy" instance=ExtResource("1_scupa")]
+[node name="TinyZombie" instance=ExtResource("1_scupa")]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 1
 script = ExtResource("2_cusdk")
+attack_range = 25.0
 move_speed = 50.0
 MAX_HEALTH = 3.0
 
@@ -21,3 +23,6 @@ texture = ExtResource("2_txqpp")
 [node name="Hitbox" parent="." index="1"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_v1lwg")
+
+[node name="Claw" parent="Weapons" index="0" instance=ExtResource("4_35ka2")]
+unique_name_in_owner = true

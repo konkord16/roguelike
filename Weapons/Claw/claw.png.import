@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch03ibo0n4lxv"
-path="res://.godot/imported/attack.png-1c73ae8aee494928bffe37a0c53ce9c4.ctex"
+path="res://.godot/imported/claw.png-3ddf45ab7ca36d0df1a7736daadef9d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/attack.png"
-dest_files=["res://.godot/imported/attack.png-1c73ae8aee494928bffe37a0c53ce9c4.ctex"]
+source_file="res://Weapons/Claw/claw.png"
+dest_files=["res://.godot/imported/claw.png-3ddf45ab7ca36d0df1a7736daadef9d0.ctex"]
 
 [params]
 

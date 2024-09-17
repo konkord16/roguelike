@@ -1,14 +1,10 @@
 extends Enemy
 
+@export var attack_range := 25.0
+
 func _physics_process(delta: float) -> void:
 	super(delta)
-	chase()
-
-func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if not body.has_method("get_hit"):
-		return
-	var attack := Attack.new()
-	attack.damage = 1
-	attack.position = global_position
-	attack.knockback_force = 300
-	body.get_hit(attack)
+	if player_pos.length() > attack_range:
+		chase()
+	elif not %Claw.animator.is_playing():
+		%Claw.attack(player.global_position)

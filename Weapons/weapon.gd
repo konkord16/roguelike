@@ -18,14 +18,16 @@ signal dashed(direction : Vector2, force : float)
 var combo_hit := 0
 var direction : Vector2
 
+func _ready() -> void:
+	if owner.is_in_group("player"):
+		%Hurtbox.collision_mask = 0b1100
+	elif owner is Enemy:
+		%Hurtbox.collision_mask = 0b1010
+
 
 func attack(new_direction : Vector2) -> bool:
 	if not (%Combo.time_left == 0 and combo_hit < combo_length and animator.get_queue().size() == 0):
 		return false
-	if global_rotation < 0:
-		z_index = -1
-	else:
-		z_index = 0
 	direction = new_direction
 	animator.queue("attack" + str(combo_hit))
 	combo_hit += 1
@@ -34,17 +36,20 @@ func attack(new_direction : Vector2) -> bool:
 	%ComboCooldown.start()
 	return true
 
+
 func _on_combo_cooldown_timeout() -> void:
 	combo_hit = 0
 
-func deal_damage(body: Node2D) -> void:
+
+func deal_damage(body: Node2D, damage_mult := 1.0) -> void:
 	if not body.has_method("get_hit"):
 		return
 	var attack := Attack.new()
-	attack.damage = damage
+	attack.damage = damage * damage_mult
 	attack.position = global_position
 	attack.knockback_force = knockback_force
 	body.get_hit(attack)
+
 
 func dash(angle : float, force : float) -> void: # Make the owner dash
 	dashed.emit(Vector2.RIGHT.rotated(rotation + angle), force)
@@ -52,4 +57,8 @@ func dash(angle : float, force : float) -> void: # Make the owner dash
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
 	look_at(direction)
+	if global_rotation < 0:
+		z_index = -1
+	else:
+		z_index = 0
 	attacked.emit()
