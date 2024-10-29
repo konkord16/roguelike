@@ -172,4 +172,5 @@ libraries = {
 [node name="ComboCooldown" parent="." index="3"]
 wait_time = 0.5
 
+[connection signal="area_entered" from="Pivot/Sprite2D/Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Pivot/Sprite2D/Hurtbox" to="." method="_on_hurtbox_body_entered"]

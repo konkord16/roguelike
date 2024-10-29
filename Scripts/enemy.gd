@@ -8,7 +8,7 @@ var player_alive := true
 
 func _physics_process(delta: float) -> void:
 	super(delta)
-	if is_instance_valid(player):
+	if is_instance_valid(player) and player.hp > 0:
 		player_pos = to_local(player.global_position)
 	else:
 		player_alive = false

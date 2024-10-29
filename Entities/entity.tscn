@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmhirtfi7tyoq"]
+
+[ext_resource type="Script" path="res://Entities/entity.gd" id="1_g87d3"]
+[ext_resource type="AnimationLibrary" uid="uid://dltvov4v6rxkn" path="res://Entities/entity_anim.res" id="2_jhq64"]
+
+[node name="Entity" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 0
+script = ExtResource("1_g87d3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+hframes = 9
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("2_jhq64")
+}
+
+[node name="Weapons" type="Node2D" parent="."]
+unique_name_in_owner = true
