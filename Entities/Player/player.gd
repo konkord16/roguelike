@@ -10,3 +10,8 @@ func _physics_process(delta: float) -> void:
 		current_weapon.attack(get_global_mouse_position())
 	if Input.is_action_pressed("special"):
 		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("swap_weapon") and not current_weapon.animator.is_playing():
+		if current_weapon == weapons[0]:
+			current_weapon = weapons[1]
+		else:
+			current_weapon = weapons[0]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt4l0tui41uka"
-path="res://.godot/imported/atlas_walls_low-16x16.png-3d1110f2c224a8d39564ed4e7da18eff.ctex"
+uid="uid://v7ota1wfg52y"
+path="res://.godot/imported/Sprite-0002.png-ae3dc5420d0f612e18c7a462f856cc9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/atlas_walls_low-16x16.png"
-dest_files=["res://.godot/imported/atlas_walls_low-16x16.png-3d1110f2c224a8d39564ed4e7da18eff.ctex"]
+source_file="res://Scenes/Door/Sprite-0002.png"
+dest_files=["res://.godot/imported/Sprite-0002.png-ae3dc5420d0f612e18c7a462f856cc9e.ctex"]
 
 [params]
 

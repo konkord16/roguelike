@@ -9,7 +9,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.owner is Weapon:
-		dash(PI, 300)
+		dash(PI, 150)
 		%Hurtbox.set_deferred("monitoring", false)
 		var sparks_inst : GPUParticles2D = sparks.instantiate()
 		sparks_inst.global_position = area.global_position - global_position

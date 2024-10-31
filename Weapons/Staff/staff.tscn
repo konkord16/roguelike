@@ -62,22 +62,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Pivot/Sprite2D:rotation")
+tracks/4/path = NodePath("Pivot/Sprite2D/Hurtbox:monitorable")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.5708]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Pivot/Sprite2D/Hurtbox:monitorable")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -86,7 +74,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_tmnvl"]
 resource_name = "attack0"
-length = 0.25
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -119,7 +107,7 @@ tracks/2/path = NodePath("Pivot/Sprite2D:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0.05, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -194,7 +182,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_pev3o"]
 resource_name = "attack1"
-length = 0.25
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -227,7 +215,7 @@ tracks/2/path = NodePath("Pivot/Sprite2D:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0.05, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -302,7 +290,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_2derv"]
 resource_name = "attack2"
-length = 0.25
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -335,7 +323,7 @@ tracks/2/path = NodePath("Pivot/Sprite2D:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0.05, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -425,7 +413,7 @@ combo_length = 3
 [node name="Sprite2D" parent="Pivot" index="0"]
 visible = false
 position = Vector2(0, 0)
-rotation = 1.5708
+rotation = 1.32645
 texture = ExtResource("2_0shw1")
 
 [node name="CollisionShape2D" parent="Pivot/Sprite2D/Hurtbox" index="0"]

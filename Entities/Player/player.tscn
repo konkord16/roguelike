@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dol7sfm54jgcy"]
+[gd_scene load_steps=7 format=3 uid="uid://dol7sfm54jgcy"]
 
 [ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_2jtmy"]
 [ext_resource type="PackedScene" uid="uid://dmhirtfi7tyoq" path="res://Entities/entity.tscn" id="1_x7fqg"]
 [ext_resource type="Texture2D" uid="uid://cimdsw671iqb8" path="res://Entities/Player/Assets/knight/knight_m.png" id="2_bxi6b"]
 [ext_resource type="PackedScene" uid="uid://ft630w5xfq62" path="res://Weapons/Regular sword/regular_sword.tscn" id="4_2tj31"]
 [ext_resource type="PackedScene" uid="uid://fvm7455gtmq4" path="res://Weapons/Staff/staff.tscn" id="5_h41xj"]
-[ext_resource type="PackedScene" uid="uid://dcn7cpaob4cd3" path="res://Weapons/Claw/claw.tscn" id="6_7spc4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra7ht"]
 size = Vector2(8, 11.5)
@@ -30,11 +29,14 @@ zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_enabled = true
 
-[node name="Staff" parent="Weapons" index="0" instance=ExtResource("5_h41xj")]
+[node name="RegularSword" parent="Weapons" index="0" instance=ExtResource("4_2tj31")]
 position = Vector2(0, 5)
 
-[node name="RegularSword" parent="Weapons" index="1" instance=ExtResource("4_2tj31")]
+[node name="Staff" parent="Weapons" index="1" instance=ExtResource("5_h41xj")]
 position = Vector2(0, 5)
 
-[node name="Claw" parent="Weapons" index="2" instance=ExtResource("6_7spc4")]
-position = Vector2(0, 5)
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0"]
+offset_right = 40.0
+offset_bottom = 40.0
